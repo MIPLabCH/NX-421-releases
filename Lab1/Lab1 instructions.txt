@@ -1,0 +1,3 @@
+Welcome to the first lab!
+In this lab, we will mostly ensure that you can make everything run smoothly.
+If you can, then we can move on to familiarizing you with the basic tools you will need for the purpose of this class !
