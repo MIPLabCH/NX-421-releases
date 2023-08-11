@@ -1,0 +1,3 @@
+[submodule "NX_NSSP_public"]
+	path = NX_NSSP_public
+	url = https://github.com/Shrecki/NX_NSSP_public
