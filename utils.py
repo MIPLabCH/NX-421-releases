@@ -3,12 +3,12 @@ async def importFSLasync():
     import lmod
     import os
     await lmod.purge(force=True)
-    await lmod.load('fsl/6.0.7.4')
+    await lmod.load('fsl/6.0.7.18')
     await lmod.list()
 
 def loadFSL():
     """
-    Function to load FSL 6.0.7.4 module
+    Function to load FSL 6.0.7.18 module
     Ensures proper environment variables are setup.
     This function should be called at the start of any
     notebook which relies in any capacity on FSL.
@@ -21,7 +21,7 @@ def loadFSL():
     import os
     # We need to do the import asynchronously, as modules rely on await within
     #asyncio.run(importFSLasync())
-    os.environ["FSLDIR"]="/cvmfs/neurodesk.ardc.edu.au/containers/fsl_6.0.7.4_20231005/fsl_6.0.7.4_20231005.simg/opt/fsl-6.0.7.4/"
+    os.environ["FSLDIR"]="/cvmfs/neurodesk.ardc.edu.au/containers/fsl_6.0.7.18_20250928/fsl_6.0.7.18_20250928.simg/opt/fsl-6.0.7.18/"
     os.environ["FSLOUTPUTTYPE"]="NIFTI_GZ"
     os.environ["SINGULARITY_BINDPATH"]="/data,/neurodesktop-storage,/tmp,/cvmfs"
 
