@@ -49,10 +49,6 @@
             "An fMRI recording is a collection of BOLD-weighted images.": [
                 true,
                 "fMRI aims to measure the blood oxygen level dependent (BOLD) signal."
-            ],
-            "An fMRI can be both T1 or T2 weighted, depending on the TR and TE.": [
-                true,
-                "The actual sequence used depends on the desired contrast in analysis."
             ]
         },
         "multi-choice": true
