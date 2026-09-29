@@ -1,0 +1,166 @@
+[
+    {
+        "question": "Look at the axial view of the EPI (without correction), why do we see frontal horns?",
+        "options": {
+            "The participant is an imp": [
+              false,
+              "The data was actually screened for humans. Look at the T1 when in doubt: you will see the participant doesn't have horns."
+            ],
+            "This is a rare case of astral projection": [
+                false,
+                "Spooky! But no, this isn't Doctor Strange."
+            ],
+            "The anatomy of the participant is a rare case of overdeveloped cortex.": [
+                false,
+                "Look at the T1. These horns are not present, meaning it is not part of the anatomy."
+            ],
+            "Because of distortions in the magnetic field.": [
+                true,
+                "Indeed, and it is precisely what fieldmaps aim to correct."
+            ]
+        },
+        "multi-choice": false
+    },
+    {
+        "question": "Why did we apply coregistration to only a single EPI volume ?",
+        "options": {
+            "With motion-correction, all EPI volumes will move together when we apply the coregistration to a single volume": [
+              false,
+              "The EPI volumes are indeed aligned following motion correction. However, applying one more transform to a single volume will not move the other volumes."
+            ],
+            "We were interested in computing a single transform, as all EPI volumes after motion-correction are aligned. We still need to apply this transform to all volumes": [
+                true,
+                "Indeed! This is precisely what we will show you here."
+            ]
+        },
+        "multi-choice": false
+    },
+    {
+        "question": "Why do you think this file is a .nii.gz instead of a .mat file?",
+        "options": {
+            "Because there is one transformation for each voxel: the brain is deformed non-uniformly.": [
+              true,
+              "Indeed, that is why we call it a warp-field. You can see in this specific brain how regions near the orbit are deformed but not for instance the ventricles. We need this non-homogeneity, as the signal drop is not uniform to begin with."
+            ],
+            "Because a .mat file encodes a matrix transformation and cannot represent a transformation which differs voxel-by-boxel": [
+                true,
+                "Indeed, FSL represents linear transformations with .mat files. But a warp-field, by definition, cannot be encoded by a matrix."
+            ],
+            "Because the brain is going to hyperspace": [
+                false,
+                "Start up the navicomputers R2! 🤖 🛸 "
+            ]
+        },
+        "multi-choice": true
+    },
+    {
+        "question": "Why do we combine all transformations except motion correct?",
+        "options": {
+            "Because motion correction has been applied so we can ignore it.": [
+              false,
+              "No, remember: we are working on the untransformed EPI to avoid too many interpolations. Our goal is to apply all transforms, including motion correction!"
+            ],
+            "Because we apply motion-correction in the applywarp as pre-step and all the rest of the transform as a single non-linear transform.": [
+                true,
+                "Indeed! The motion-correction is an affine transform, while the warp isn't."
+            ]
+        },
+        "multi-choice": false
+    },
+    {
+        "question": "Can you determine along with direction the acquisition was made?",
+        "options": {
+            "The X direction (R-L axis)": [
+              false,
+              "Look at the direction of the color gradient: this is where we have a time gradient in the sampling which creates the color gradient, and it is along the direction of the gradient that the acquisition was made."
+            ],
+            "The Y direction (A-P axis)": [
+                true,
+                "Indeed! We can see the gradient progressing nicely along this axis."
+            ],
+            "The Z direction (I-S axis)": [
+                false,
+                "Look at the direction of the color gradient: this is where we have a time gradient in the sampling which creates the color gradient, and it is along the direction of the gradient that the acquisition was made."
+            ]
+        },
+        "multi-choice": false
+    },
+    {
+        "question": "What is the shape of the dataset (number of fNIRs channels, timepoints)?",
+        "options": {
+            "(56, 23239)": [
+              true,
+              "Indeed. Regarding the number of points, note that 23239 x 7.81 Hz gives a little more than 49 minutes and 35 seconds."
+            ],
+            "(17, 98888)": [
+                false,
+                "Not quite."
+            ],
+            "(56, 78889)": [
+                false,
+                "Look at the number of time points."
+            ],
+            "(17, 23239)": [
+                false,
+                "Your channels are wrong."
+            ]
+        },
+        "multi-choice": false
+    },
+    {
+        "question": "What is the cortical region covered by this measurement ?",
+        "options": {
+            "Motor cortex": [
+              true,
+              "In this finger tapping task, sensors are placed over the motor cortex. This region is located in the dorsal portion of the frontal lobe."
+            ],
+            "Visual cortex": [
+                false,
+                "Not quite, the occipital lobe is at the back of the brain."
+            ],
+            "Temporal cortex": [
+                false,
+                "The electrodes are stopping way above the temporal lobe."
+            ],
+            "Brainstem": [
+                false,
+                "The brainstem is not visible from this surface view."
+            ]
+        },
+        "multi-choice": false
+    },
+    {
+        "question": "What are the analytical challenges associated with employing a block-related experimental design featuring continuous stimulation and brief rest blocks?",
+        "options": {
+            "I have no clue, show me the solution.": [
+              true,
+              "In a block-related experimental design with continuous stimulation and brief rest blocks, we can end-up having a non-linear summation of the hemodynamic responses to stimuli. This non-linearity can cause a mismatch between the predicted  summation of responses obtained with linear approaches (e.g., averaging or general linear modelling) and the actual observed data. "
+            ]
+        },
+        "multi-choice": false
+    },
+    {
+        "question": "Visually, are you able to localize a motion artifact?",
+        "options": {
+            "I have no clue, show me the solution.": [
+              true,
+              "There are two types of motion artefacts we can visualize in this graph: a spike between 185-190s and a baseline shift in the S8_D8 850 channel. These two types of artefact can easily happen in motor tasks."
+            ]
+        },
+        "multi-choice": false
+    },
+    {
+        "question": "From a visual standpoint, can we conclude that TDDR successfully eliminated all the motion artifacts from your data?",
+        "options": {
+            "Yes": [
+              false,
+              "While the TDDR corrected the baseline shift seen in some of the channels (e.g., S8_D8 850) it did not remove the spikes from the signal. This low sensitivity to motion-related spikes is actually one of the limits of the TDDR method. More robust methods that are however not proposed in mne-nirs library are the wavelet filtering or the spline interpolation."
+            ],
+            "No": [
+              true,
+              "While the TDDR corrected the baseline shift seen in some of the channels (e.g., S8_D8 850) it did not remove the spikes from the signal. This low sensitivity to motion-related spikes is actually one of the limits of the TDDR method. More robust methods that are however not proposed in mne-nirs library are the wavelet filtering or the spline interpolation."
+            ]
+        },
+        "multi-choice": false
+    }
+]
